@@ -144,27 +144,30 @@
     </div>
   </footer>
 
-  <script>
-    document.querySelector('.vote-btn').addEventListener('click', function () {
-      const selected = document.querySelector('input[name="vote"]:checked');
-      const pollSection = document.querySelector('.poll-result');
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Голосование
+  document.querySelector('.vote-btn').addEventListener('click', function () {
+    const selected = document.querySelector('input[name="vote"]:checked');
+    const pollSection = document.querySelector('.poll-result');
 
-      if (selected) {
-        const vote = selected.value;
-        let rcbVotes = Math.floor(Math.random() * 40) + 50;
-        let cskVotes = 100 - rcbVotes;
-        if (vote === "csk") [rcbVotes, cskVotes] = [cskVotes, rcbVotes];
-        pollSection.innerHTML = `
-          <p><strong>Voting results:</strong></p>
-          <p>🏏 Royal Challengers Bangalore — <span>${rcbVotes}%</span></p>
-          <p>🟡 Chennai Super Kings — <span>${cskVotes}%</span></p>
-        `;
-      } else {
-        alert("Please select your winner before voting.");
-      }
-    });
+    if (selected) {
+      const vote = selected.value;
+      let rcbVotes = Math.floor(Math.random() * 40) + 50;
+      let cskVotes = 100 - rcbVotes;
+      if (vote === "csk") [rcbVotes, cskVotes] = [cskVotes, rcbVotes];
+      pollSection.innerHTML = `
+        <p><strong>Voting results:</strong></p>
+        <p>🏏 Royal Challengers Bangalore — <span>${rcbVotes}%</span></p>
+        <p>🟡 Chennai Super Kings — <span>${cskVotes}%</span></p>
+      `;
+    } else {
+      alert("Please select your winner before voting.");
+    }
+  });
 
-    const observer = new IntersectionObserver(entries => {
+  // Плавная анимация появления
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
@@ -176,7 +179,7 @@
   });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  </script>
+});
+</script>
 </body>
 </html>
