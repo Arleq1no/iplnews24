@@ -275,26 +275,50 @@ footer {
 }
 
 @media screen and (max-width: 900px) {
-  .main-layout {
-    flex-direction: column;
-  }
-  .sidebar {
+  html, body {
+    overflow-x: hidden;
     width: 100%;
   }
-}
 
-@media (max-width: 768px) {
+  table, th, td {
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+  
+  table {
+    overflow-x: auto;
+    display: block;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    padding: 1rem;
+  }
+
   .main-layout {
     flex-direction: column;
+    gap: 20px;
+    width: 100%;
   }
 
   .sidebar {
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
   }
 
   .cards {
     flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+    min-width: 0;
   }
 
   nav ul {
@@ -308,19 +332,25 @@ footer {
     align-items: flex-start;
   }
 
-  .hero, .card {
+  .hero {
     padding: 1rem;
+    width: 100%;
   }
 
-  .container {
-    padding: 1rem;
-  }
-
-  table, th, td {
+  table,
+  th,
+  td {
     font-size: 14px;
+    width: 100%;
+    word-break: break-word;
   }
 
   .logo {
     font-size: 20px;
+  }
+
+  footer {
+    padding: 20px 10px;
+    font-size: 13px;
   }
 }
