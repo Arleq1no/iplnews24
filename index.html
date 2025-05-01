@@ -66,7 +66,9 @@
         <p><strong>Weather:</strong> Clear skies, 29°C</p>
       
         <button class="cta-btn vote-btn" type="button">Vote Now</button>
-        <div class="poll-result"></div>
+        <div class="poll-result-wrapper">
+          <div class="poll-result"></div>
+        </div>
       </aside>
 
     <main class="main-content">
@@ -150,23 +152,29 @@
       document.querySelectorAll('.vote-btn').forEach(button => {
         button.addEventListener('click', function () {
           const selected = document.querySelector('input[name="vote"]:checked');
-          const pollSection = document.querySelector('.poll-result');
     
           if (selected) {
             const vote = selected.value;
             let rcbVotes = Math.floor(Math.random() * 40) + 50;
             let cskVotes = 100 - rcbVotes;
             if (vote === "csk") [rcbVotes, cskVotes] = [cskVotes, rcbVotes];
-            pollSection.innerHTML = `
-              <p><strong>Voting results:</strong></p>
-              <p>🏏 Royal Challengers Bangalore — <span>${rcbVotes}%</span></p>
-              <p>🟡 Chennai Super Kings — <span>${cskVotes}%</span></p>
-            `;
+    
+            // Обновить ВСЕ блоки с результатами
+            document.querySelectorAll('.poll-result').forEach(pollSection => {
+              pollSection.innerHTML = `
+                <div class="result-box">
+                  <p><strong>🗳 Voting results:</strong></p>
+                  <p>🏏 Royal Challengers Bangalore — <span>${rcbVotes}%</span></p>
+                  <p>🟡 Chennai Super Kings — <span>${cskVotes}%</span></p>
+                  <p class="thanks">Thanks for voting!</p>
+                </div>
+              `;
+            });
           } else {
             alert("Please select your winner before voting.");
           }
         });
-      }); // ✅ ← вот эту строку ты пропустил
+      });
     
       // Плавная анимация появления
       const observer = new IntersectionObserver(entries => {
@@ -176,9 +184,7 @@
             observer.unobserve(entry.target);
           }
         });
-      }, {
-        threshold: 0.1
-      });
+      }, { threshold: 0.1 });
     
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     });
