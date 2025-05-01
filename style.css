@@ -12,6 +12,8 @@ body {
   padding: 20px;
 }
 
+
+
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -156,6 +158,63 @@ nav a {
 .poll-result span {
   font-weight: 600;
 }
+
+
+
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url('imgs/Bg-fans.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #fff; /* или убери если текст на белом фоне */
+}
+
+.card, .main-content, .sidebar {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.card, .sidebar {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card,
+.sidebar,
+.hero,
+.news-item,
+.stats,
+table,
+footer,
+.poll-form {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.card:hover,
+.sidebar:hover,
+.hero:hover,
+.news-item:hover,
+.stats:hover,
+table:hover,
+footer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
 
 table {
   width: 100%;
