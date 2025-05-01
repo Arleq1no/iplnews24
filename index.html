@@ -147,7 +147,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // Голосование
-  document.querySelector('.vote-btn').addEventListener('click', function () {
+  document.querySelectorAll('.vote-btn').forEach(button => {   button.addEventListener('click', function () {
     const selected = document.querySelector('input[name="vote"]:checked');
     const pollSection = document.querySelector('.poll-result');
 
